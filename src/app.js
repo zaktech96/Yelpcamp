@@ -5,7 +5,16 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+require('dotenv').config();
+
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
+
+// mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+
+mongoose.connect(CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
