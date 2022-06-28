@@ -1,20 +1,15 @@
 const express = require('express');
-const bodyparser = require('body-parser')
+const bodyparser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const catchAsync = require('./utils/catchAsync');
+const catchAsync = require('../utils/catchAsync');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
 require('dotenv').config();
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
-
-// mongoose.connect('mongodb://localhost:27017/yelp-camp', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
 
 mongoose.connect(CONNECTION_STRING, {
     useNewUrlParser: true,
