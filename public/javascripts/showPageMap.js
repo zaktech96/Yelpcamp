@@ -15,5 +15,7 @@ new mapboxgl.Marker()
 
 const popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat(campground.geometry.coordinates)
-    .setHTML(`<h3>${campground.title}</h3><p>${campground.location}</p>`)
+    .setHTML(
+        `<h5>${campground.title}</h5><p>${campground.location}</p>`
+    )
     .addTo(map);
