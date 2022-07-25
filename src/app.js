@@ -31,11 +31,10 @@ const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 const userRoutes = require('../routes/users');
 const campgroundRoutes = require('../routes/campgrounds');
 const reviewRoutes = require('../routes/reviews');
-const MongoStore = require('connect-mongo');
 
 const MongoDBStore = require("connect-mongo")(session);
 
-const connection= process.env.CONNECTION_STRING
+
 
 // mongoose.connect('mongodb://localhost:27017/yelp-camp', {
 //     useNewUrlParser: true,
@@ -44,6 +43,7 @@ const connection= process.env.CONNECTION_STRING
 // });
 
 
+const connection = process.env.CONNECTION_STRING 
 mongoose.connect(CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true
