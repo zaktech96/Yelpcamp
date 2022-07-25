@@ -24,13 +24,18 @@ const methodOverride = require('method-override');
 
 const res = require('express/lib/response');
 
-require('dotenv').config();
+
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 const userRoutes = require('../routes/users');
 const campgroundRoutes = require('../routes/campgrounds');
 const reviewRoutes = require('../routes/reviews');
+const MongoStore = require('connect-mongo');
+
+const MongoDBStore = require("connect-mongo")(session);
+
+const connection= process.env.CONNECTION_STRING
 
 // mongoose.connect('mongodb://localhost:27017/yelp-camp', {
 //     useNewUrlParser: true,
@@ -61,9 +66,22 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'))
 app.use(mongoSanitize())
 
+const store = new MongoDBStore({
+url:CONNECTION_STRING,
+secret,
+touchAfter: 24 * 60 * 60
+})
+
+const secret = process.env.SECRET || 'shouldbebettersecret!'
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR",e)
+})
+
 const sessionConfig = {
+    store,
     name: 'session',
-    secret: 'shouldbebettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
