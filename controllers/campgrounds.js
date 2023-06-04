@@ -2,8 +2,8 @@ const { model } = require("mongoose");
 const Campground = require("../src/models/campground");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken =
-  pk.eyJ1IjoiemFrdGVjaDk2IiwiYSI6ImNsaWduNWlldDBoMDAzZG53MjhnYXAxNnIifQ
-    .bSIanCa5BjjPxt9R6Sb1Ew;
+  pk.eyJ1IjoiemFrdGVjaDk2IiwiYSI6ImNsaWducXNnOTByOGwzZG1yYXp0YXBjazAifQ
+    .qcOQxPFA5BhvrFyrJvHOoQ;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
