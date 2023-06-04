@@ -60,15 +60,28 @@ app.use(express.static("public"));
 app.use(mongoSanitize());
 const secret = process.env.SECRET || "shouldbebettersecret!";
 
-const store = new MongoDBStore({
-  url: CONNECTION_STRING,
+const mongoose = require("mongoose");
+const MongoDBStore = require("connect-mongo");
+
+const store = new MongoDBStore.create({
+  mongoUrl: CONNECTION_STRING,
   secret,
   touchAfter: 24 * 60 * 60,
+  mongoOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
 });
 
-store.on("error", function (e) {
-  console.log("SESSION STORE ERROR", e);
-});
+// const store = new MongoDBStore({
+//   url: CONNECTION_STRING,
+//   secret,
+//   touchAfter: 24 * 60 * 60,
+// });
+
+// store.on("error", function (e) {
+//   console.log("SESSION STORE ERROR", e);
+// });
 
 const sessionConfig = {
   store,
