@@ -50,7 +50,7 @@ app.use(express.static("public"));
 app.use(mongoSanitize());
 const secret = process.env.SECRET || "shouldbebettersecret!";
 
-const store = new MongoDBStore.create({
+const store = MongoDBStore.create({
   mongoUrl: CONNECTION_STRING,
   secret,
   touchAfter: 24 * 60 * 60,
