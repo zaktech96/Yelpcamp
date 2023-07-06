@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "seed": "node seed/index.js"
+    "seed": "node seed/index.js",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",
